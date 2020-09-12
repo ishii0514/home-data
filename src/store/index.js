@@ -38,7 +38,7 @@ export default new Vuex.Store({
     login({ dispatch }, authData) {
       axios
         .post(
-          "/accounts:signInWithPassword?key=AIzaSyBbr4TORURVqqNCBX14db21mppV2iZH5aI",
+          `/accounts:signInWithPassword?key=${process.env.VUE_APP_API_KEY}`,
           {
             email: authData.email,
             password: authData.password,
@@ -63,7 +63,7 @@ export default new Vuex.Store({
     },
     async refreshIdToken({ dispatch }, refreshToken) {
       axiosRefresh
-        .post("/token?key=AIzaSyBbr4TORURVqqNCBX14db21mppV2iZH5aI", {
+        .post(`/token?key=${process.env.VUE_APP_API_KEY}`, {
           grant_type: "refresh_token",
           refresh_token: refreshToken,
         })

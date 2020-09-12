@@ -7,8 +7,7 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
-axios.defaults.baseURL =
-  "https://firestore.googleapis.com/v1/projects/home-data-b109b/databases/(default)/documents";
+axios.defaults.baseURL = `https://firestore.googleapis.com/v1/projects/${process.env.VUE_APP_PROJECT_ID}/databases/(default)/documents`;
 
 store.dispatch("autoLogin").then(() => {
   new Vue({
