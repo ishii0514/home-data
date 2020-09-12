@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <header>
+  <v-app>
+    <v-app-var app color="gray accent-4" dark>
       <template v-if="isAuthentivated">
-        <span class="header-item" @click="logout">Logout</span>
+        <v-btn text color="primary" @click="logout">Logout</v-btn>
       </template>
-    </header>
-    <router-view></router-view>
-  </div>
+    </v-app-var>
+    <v-main>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
