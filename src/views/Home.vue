@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <h3>home</h3>
-    <div v-for="post in posts" :key="post.name">
-      <div>{{ post.fields.name.stringValue }}</div>
-      <div>{{ post.fields.comment.stringValue }}</div>
-    </div>
-  </div>
+  <v-app>
+    <v-card>
+      <v-card-title>
+        <h1 class="display-1">Home</h1>
+      </v-card-title>
+      <v-card-text>
+        <div v-for="post in posts" :key="post.name">
+          <div>Name: {{ post.fields.name.stringValue }}</div>
+          <div>Comment: {{ post.fields.comment.stringValue }}</div>
+        </div>
+      </v-card-text>
+    </v-card>
+  </v-app>
 </template>
 
 <script>
