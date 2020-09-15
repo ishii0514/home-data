@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+//import Home from "./views/Home.vue";
+import Graph from "./views/Graph.vue";
 import Login from "./views/Login.vue";
 import store from "./store";
 
@@ -11,7 +12,7 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: Home,
+      component: Graph,
       beforeEnter(to, from, next) {
         if (store.getters.idToken) {
           next();

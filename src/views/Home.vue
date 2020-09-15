@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "../axios-data";
 
 export default {
   data() {
@@ -21,6 +21,7 @@ export default {
       name: "",
       comment: "",
       posts: [],
+      is_auth: true,
     };
   },
   computed: {
@@ -29,15 +30,20 @@ export default {
     },
   },
   created() {
-    axios
-      .get("/test_data", {
-        headers: {
-          Authorization: `Bearer ${this.idToken}`,
-        },
-      })
-      .then((responce) => {
-        this.posts = responce.data.documents;
-      });
+    axios.get("/test_data", this.auth_header()).then((responce) => {
+      this.posts = responce.data.documents;
+    });
+  },
+  methods: {
+    auth_header() {
+      return this.is_auth
+        ? {
+            headers: {
+              Authorization: `Bearer ${this.idToken}`,
+            },
+          }
+        : {};
+    },
   },
 };
 </script>

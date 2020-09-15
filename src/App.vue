@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <v-app-var app color="gray accent-4" dark>
+    <v-app-bar app color="indigo" dark>
       <template v-if="isAuthentivated">
-        <v-btn text color="primary" @click="logout">Logout</v-btn>
+        <v-btn text color="white" @click="logout">Logout</v-btn>
       </template>
-    </v-app-var>
+    </v-app-bar>
     <v-main>
       <v-container fluid>
         <router-view></router-view>
