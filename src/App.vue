@@ -2,6 +2,12 @@
   <v-app>
     <v-app-bar app color="indigo" dark>
       <template v-if="isAuthentivated">
+        <router-link to="/" tag="div">
+          <v-btn text color="white">Graph</v-btn>
+        </router-link>
+        <router-link to="/realtime-graph" tag="div">
+          <v-btn text color="white">RealtimeGraph</v-btn>
+        </router-link>
         <v-btn text color="white" @click="logout">Logout</v-btn>
       </template>
     </v-app-bar>
@@ -27,8 +33,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.header-item {
-  padding: 10px;
-}
-</style>

@@ -10,7 +10,6 @@ export default {
   data() {
     return {
       loaded: false,
-      is_auth: true,
       chartdata: {
         labels: [],
         datasets: [
@@ -29,6 +28,9 @@ export default {
   computed: {
     idToken() {
       return this.$store.getters.idToken;
+    },
+    isAuth() {
+      return this.$store.getters.isAuth;
     },
   },
   created() {
@@ -60,7 +62,7 @@ export default {
   },
   methods: {
     auth_header() {
-      return this.is_auth
+      return this.isAuth
         ? {
             headers: {
               Authorization: `Bearer ${this.idToken}`,

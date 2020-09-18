@@ -21,12 +21,14 @@ export default {
       name: "",
       comment: "",
       posts: [],
-      is_auth: true,
     };
   },
   computed: {
     idToken() {
       return this.$store.getters.idToken;
+    },
+    isAuth() {
+      return this.$store.getters.isAuth;
     },
   },
   created() {

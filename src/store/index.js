@@ -8,9 +8,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     idToken: null,
+    isAuth: false,
   },
   getters: {
     idToken: (state) => state.idToken,
+    isAuth: (state) => state.isAuth,
   },
   mutations: {
     updateIdToken(state, idToken) {
