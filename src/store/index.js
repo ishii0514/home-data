@@ -8,7 +8,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    idToken: null,
     isAuth: false,
   },
   getters: {
@@ -21,25 +20,35 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    logout() {
+    logout({ commit }) {
       firebase
         .auth()
         .signOut()
         .then(() => {
+          commit("setAuth", false);
           router.replace("/login");
         });
     },
-    login(context, authData) {
+    login({ commit }, authData) {
       firebase
         .auth()
         .signInWithEmailAndPassword(authData.email, authData.password)
-        .then(router.push("/"));
+        .then(() => {
+          commit("setAuth", true);
+          router.push("/");
+        });
     },
-    isAuth() {
-      firebase.auth().onAuthStateChanged(function(user) {
-        console.log(user);
-        const isAuth = user != null;
-        this.$commit("setAuth", isAuth);
+    async setAuth({ dispatch }) {
+      await dispatch("syncAuth");
+    },
+    syncAuth({ commit }) {
+      return new Promise((resolve) => {
+        firebase.auth().onAuthStateChanged((user) => {
+          const isAuth = user != null;
+          console.log("login: " + isAuth);
+          commit("setAuth", isAuth);
+          resolve();
+        });
       });
     },
   },

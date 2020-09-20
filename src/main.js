@@ -7,9 +7,14 @@ import "./plugins/firebase";
 
 Vue.config.productionTip = false;
 
-new Vue({
-  vuetify,
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+store.dispatch("setAuth").then(() => {
+  new Vue({
+    vuetify,
+    router,
+    store,
+    render: (h) => h(App),
+    //mounted() {
+    //  store.dispatch("setAuth");
+    //},
+  }).$mount("#app");
+});
