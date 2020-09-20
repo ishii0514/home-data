@@ -7,11 +7,9 @@ import "./plugins/firebase";
 
 Vue.config.productionTip = false;
 
-store.dispatch("autoLogin").then(() => {
-  new Vue({
-    vuetify,
-    router,
-    store,
-    render: (h) => h(App),
-  }).$mount("#app");
-});
+new Vue({
+  vuetify,
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app");

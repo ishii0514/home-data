@@ -1,48 +1,45 @@
 import Vue from "vue";
 import Router from "vue-router";
-//import Home from "./views/Home.vue";
-import Graph from "./views/Graph.vue";
 import RealtimeGraph from "./views/RealtimeGraph.vue";
 import Login from "./views/Login.vue";
-import store from "./store";
+import firebase from "firebase/app";
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
   mode: "history",
   routes: [
+    //{
+    //  path: "*",
+    //  redirect: "login",
+    //},
     {
       path: "/",
-      component: Graph,
-      beforeEnter(to, from, next) {
-        if (store.getters.idToken) {
-          next();
-        } else {
-          next("/login");
-        }
-      },
-    },
-    {
-      path: "/realtime-graph",
       component: RealtimeGraph,
-      beforeEnter(to, from, next) {
-        if (store.getters.idToken) {
-          next();
-        } else {
-          next("/login");
-        }
-      },
+      meta: { requiresAuth: true },
     },
     {
       path: "/login",
+      name: "login",
       component: Login,
-      beforeEnter(to, from, next) {
-        if (store.getters.idToken) {
-          next("/");
-        } else {
-          next();
-        }
-      },
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  console.log("beforeEach");
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  if (requiresAuth) {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        next();
+      } else {
+        next("/login");
+      }
+    });
+  } else {
+    next();
+  }
+});
+
+export default router;

@@ -29,12 +29,6 @@ export default {
     };
   },
   computed: {
-    idToken() {
-      return this.$store.getters.idToken;
-    },
-    isAuth() {
-      return this.$store.getters.isAuth;
-    },
     datacollection() {
       return {
         labels: this.temperatures.map((x) => x.time.toDate().toLocaleString()),

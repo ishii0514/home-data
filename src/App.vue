@@ -3,13 +3,10 @@
     <v-app-bar app color="indigo" dark>
       <template v-if="isAuthentivated">
         <router-link to="/" tag="div">
-          <v-btn text color="white">Graph</v-btn>
-        </router-link>
-        <router-link to="/realtime-graph" tag="div">
           <v-btn text color="white">RealtimeGraph</v-btn>
         </router-link>
-        <v-btn text color="white" @click="logout">Logout</v-btn>
       </template>
+      <v-btn text color="white" @click="logout">Logout</v-btn>
     </v-app-bar>
     <v-main>
       <v-container fluid>
@@ -23,7 +20,7 @@
 export default {
   computed: {
     isAuthentivated() {
-      return this.$store.getters.idToken !== null;
+      return this.$store.getters.idAuth;
     },
   },
   methods: {
