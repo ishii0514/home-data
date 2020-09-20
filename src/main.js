@@ -13,8 +13,5 @@ store.dispatch("setAuth").then(() => {
     router,
     store,
     render: (h) => h(App),
-    //mounted() {
-    //  store.dispatch("setAuth");
-    //},
   }).$mount("#app");
 });

@@ -15,7 +15,6 @@ export default new Vuex.Store({
   },
   mutations: {
     setAuth(state, isAuth) {
-      // 状態を変更する
       state.isAuth = isAuth;
     },
   },

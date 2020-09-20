@@ -6,14 +6,14 @@ import "firebase/firestore";
 Vue.use(firestorePlugin);
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyBbr4TORURVqqNCBX14db21mppV2iZH5aI",
-  authDomain: "home-data-b109b.firebaseapp.com",
-  databaseURL: "https://home-data-b109b.firebaseio.com",
-  projectId: "home-data-b109b",
-  storageBucket: "home-data-b109b.appspot.com",
-  messagingSenderId: "51941888253",
-  appId: "1:51941888253:web:ec5211047b682f594aee94",
-  measurementId: "G-PKBJCE50G9",
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGEING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
+  measurementId: process.env.VUE_APP_MEASUREMENT_ID,
 });
 
 export const db = firebaseApp.firestore();
