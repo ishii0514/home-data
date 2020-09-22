@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>realtime graph</h3>
+    <h3>{{ today.split(":")[0] }}</h3>
     <LineChart :chart-data="datacollection" :options="options" />
   </div>
 </template>
@@ -21,10 +21,9 @@ export default {
           xAxes: [
             {
               type: "time",
-              distribution: "series",
+              distribution: "linear",
               //time: {
               //  unit: "second",
-              //  //parser: "YYYY-MM-DD HH:mm:ss",
               //},
             },
           ],
@@ -46,7 +45,10 @@ export default {
   },
   firebase() {
     return {
-      temperatures: moisture_db.ref("moisture"),
+      temperatures: moisture_db
+        .ref("moisture")
+        .orderByChild("date")
+        .startAt(this.today),
     };
   },
   computed: {
@@ -68,6 +70,10 @@ export default {
           },
         ],
       };
+    },
+    today() {
+      var now = moment();
+      return now.format("YYYY-MM-DD:00:00:00");
     },
   },
   methods: {
