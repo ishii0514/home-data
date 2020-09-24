@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ today.split(":")[0] }}</h3>
+    <h3>24h</h3>
     <LineChart :chart-data="datacollection" :options="options" />
   </div>
 </template>
@@ -22,9 +22,12 @@ export default {
             {
               type: "time",
               distribution: "linear",
-              //time: {
-              //  unit: "second",
-              //},
+              time: {
+                unit: "hour",
+                displayFormats: {
+                  hour: "M-DD HA",
+                },
+              },
             },
           ],
           yAxes: [
@@ -48,7 +51,7 @@ export default {
       temperatures: moisture_db
         .ref("moisture")
         .orderByChild("date")
-        .startAt(this.today),
+        .startAt(this.now()),
     };
   },
   computed: {
@@ -71,15 +74,15 @@ export default {
         ],
       };
     },
-    today() {
-      var now = moment();
-      return now.format("YYYY-MM-DD:00:00:00");
-    },
   },
   methods: {
     date_conv(str) {
       const arry = str.split(":");
-      return moment(arry[0] + " " + arry.slice(1).join(":"));
+      return arry[0] + " " + arry.slice(1).join(":");
+    },
+    now() {
+      var now = moment();
+      return now.add(-1, "days").format("YYYY-MM-DD:HH:mm:ss");
     },
   },
 };
