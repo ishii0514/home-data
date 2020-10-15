@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import RealtimeGraph from "./views/RealtimeGraph.vue";
+// import RealtimeGraph from "./views/RealtimeGraph.vue";
+import TempGraph from "./views/TempGraph.vue"
 import Login from "./views/Login.vue";
 import store from "./store";
 
@@ -15,7 +16,7 @@ let router = new Router({
     },
     {
       path: "/",
-      component: RealtimeGraph,
+      component: TempGraph,
       meta: { requiresAuth: true },
     },
     {

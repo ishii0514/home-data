@@ -3,7 +3,7 @@
     <v-app-bar app color="indigo" dark>
       <template v-if="isAuthenticated">
         <router-link to="/" tag="div">
-          <v-btn text color="white">Realtime graph</v-btn>
+          <v-btn text color="white">Temperature graph</v-btn>
         </router-link>
         <v-btn text color="white" @click="logout">Logout</v-btn>
       </template>
