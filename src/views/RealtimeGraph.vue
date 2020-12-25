@@ -15,7 +15,7 @@
 
 <script>
 import { db } from "../plugins/firebase";
-import LineChart from "./LineChart2.vue";
+import LineChart from "./LineChart.vue";
 import moment from "moment";
 export default {
   components: { LineChart },

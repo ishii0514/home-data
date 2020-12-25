@@ -7,7 +7,7 @@
 
 <script>
 import { db } from "../plugins/firebase";
-import LineChart from "./LineChart2.vue";
+import LineChart from "./LineChart.vue";
 export default {
   components: { LineChart },
   data() {
