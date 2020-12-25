@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { moisture_db } from "../plugins/firebase";
+import { db } from "../plugins/firebase";
 import LineChart from "./LineChart2.vue";
 import moment from "moment";
 export default {
@@ -57,7 +57,7 @@ export default {
   firebase() {
     return {
       // TODO 古いデータを消す
-      temperatures: moisture_db
+      temperatures: db
         .ref("moisture")
         .orderByChild("date")
         .startAt(this.now()),

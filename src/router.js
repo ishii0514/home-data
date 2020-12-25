@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-// import RealtimeGraph from "./views/RealtimeGraph.vue";
 import TempGraph from "./views/TempGraph.vue"
 import Login from "./views/Login.vue";
 import store from "./store";

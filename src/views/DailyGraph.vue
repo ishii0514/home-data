@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { moisture_db } from "../plugins/firebase";
+import { db } from "../plugins/firebase";
 import LineChart from "./LineChart2.vue";
 export default {
   components: { LineChart },
@@ -44,7 +44,7 @@ export default {
   },
   firebase() {
     return {
-      temperatures: moisture_db
+      temperatures: db
         .ref("moisture_daily")
         .orderByKey(),
     };
